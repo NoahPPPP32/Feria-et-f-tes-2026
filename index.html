@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda des Férias 2026</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d32f2f">
+    <link rel="apple-touch-icon" href="icon.png">
+
     <style>
         /* CSS - Thème Sombre */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; margin: 0; padding: 20px; color: #e0e0e0; }
@@ -184,6 +189,14 @@
         });
 
         render();
+    </script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(() => console.log('Service Worker enregistré avec succès !'))
+            .catch((error) => console.log('Erreur du Service Worker :', error));
+        }
     </script>
 </body>
 </html>
