@@ -1,202 +1,1779 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda des Férias 2026</title>
-    
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#d32f2f">
-    <link rel="apple-touch-icon" href="icon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche de Révision — Institutions Politiques et Administratives</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e12;
+    --surface: #16161e;
+    --surface2: #1e1e2a;
+    --surface3: #252535;
+    --border: #2e2e42;
+    --blue: #3a6fd8;
+    --blue-light: #6b9df2;
+    --red: #c0392b;
+    --red-light: #e74c3c;
+    --gold: #c9a84c;
+    --gold-light: #f0ca6e;
+    --green: #27ae60;
+    --green-light: #2ecc71;
+    --purple: #8e44ad;
+    --purple-light: #9b59b6;
+    --text: #e8e8f0;
+    --text-muted: #8888aa;
+    --text-dim: #555570;
+    --accent: #3a6fd8;
+  }
 
-    <style>
-        /* CSS - Thème Sombre */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; margin: 0; padding: 20px; color: #e0e0e0; }
-        h1 { text-align: center; color: #ff5252; text-transform: uppercase; letter-spacing: 2px; }
-        .intro { text-align: center; color: #aaaaaa; margin-bottom: 20px; font-size: 1.1em; }
-        
-        .search-container { text-align: center; margin-bottom: 20px; }
-        #search-input { width: 100%; max-width: 400px; padding: 12px 20px; font-size: 1em; background-color: #1e1e1e; color: #ffffff; border: 2px solid #333; border-radius: 25px; outline: none; transition: border-color 0.3s; }
-        #search-input:focus { border-color: #ff5252; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-        .tab-btn { background-color: #2c2c2c; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; color: #e0e0e0; transition: all 0.2s; }
-        .tab-btn:hover { background-color: #3d3d3d; }
-        .tab-btn.active { background-color: #d32f2f; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .month-header { grid-column: 1 / -1; font-size: 1.8em; color: #ff5252; border-bottom: 2px solid #333; padding-bottom: 10px; margin-top: 20px; text-transform: capitalize; font-weight: bold; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
 
-        .card { background: #1e1e1e; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); padding: 20px; display: flex; flex-direction: column; transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card.fr { border-top: 6px solid #1e40af; } 
-        .card.es { border-top: 6px solid #f59e0b; } 
-        
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px; }
-        .card h2 { margin: 0; font-size: 1.3em; color: #ffffff; }
-        
-        .location { font-weight: bold; color: #ff5252; margin-top: 5px; font-size: 1.1em; }
-        .dept-info { font-weight: normal; color: #999999; font-size: 0.85em; margin-left: 5px; }
-        
-        .badge { background: #004d40; color: #80cbc4; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: bold; display: inline-block; margin-bottom: 10px; }
-        .description { font-size: 0.95em; color: #aaaaaa; line-height: 1.4; flex-grow: 1; margin-bottom: 15px; }
-        .date-info { font-weight: bold; color: #cccccc; margin-bottom: 10px; }
-        
-        .countdown { font-weight: bold; padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 15px; }
-        .fr .countdown { background: #0d2a63; color: #90caf9; }
-        .es .countdown { background: #4a3800; color: #ffe082; }
-        .past .countdown { background: #2c2c2c; color: #757575; }
-        
-        .btn { display: block; text-align: center; background: #d32f2f; color: white; text-decoration: none; padding: 10px; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
-        .btn:hover { background: #b71c1c; }
-        
-        .no-results { text-align: center; grid-column: 1 / -1; color: #aaaaaa; font-size: 1.2em; padding: 40px; }
-    </style>
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0a0a14 0%, #141428 50%, #0a0a14 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 60px,
+      rgba(58,111,216,0.03) 60px, rgba(58,111,216,0.03) 61px
+    );
+  }
+  .flag-bar {
+    display: flex; gap: 0; margin-bottom: 20px;
+  }
+  .flag-bar span {
+    height: 4px; flex: 1;
+    border-radius: 2px;
+  }
+  .flag-bar .f1 { background: #002395; }
+  .flag-bar .f2 { background: #ffffff22; }
+  .flag-bar .f3 { background: #ED2939; }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    position: relative;
+  }
+  header h1 span { color: var(--gold-light); }
+  header p.subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    position: relative;
+  }
+  .header-meta {
+    display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; position: relative;
+  }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .badge-blue { color: var(--blue-light); border-color: var(--blue); background: rgba(58,111,216,0.1); }
+  .badge-gold { color: var(--gold-light); border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .badge-red  { color: #ff8080; border-color: var(--red); background: rgba(192,57,43,0.1); }
+
+  /* ── SEARCH ── */
+  .search-bar {
+    padding: 16px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .search-bar input {
+    width: 100%; max-width: 500px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-bar input::placeholder { color: var(--text-dim); }
+  .search-bar input:focus { border-color: var(--blue); }
+  .search-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    padding: 24px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .toc-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 6px;
+  }
+  .toc-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    display: block;
+    font-family: 'Source Serif 4', serif;
+  }
+  .toc-link:hover { background: var(--surface2); color: var(--text); border-left-color: var(--blue-light); }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter-header {
+    margin: 50px 0 30px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+    display: flex; align-items: flex-start; gap: 20px;
+  }
+  .chapter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    min-width: 60px;
+    text-align: center;
+  }
+  .chapter-title {
+    flex: 1;
+  }
+  .chapter-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .chapter-title p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .section:hover { border-color: #3a3a55; }
+  .section.open { border-color: var(--accent); }
+
+  .section-header {
+    padding: 14px 20px;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface);
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .section-header:hover { background: var(--surface2); }
+  .section.open .section-header { background: var(--surface2); }
+
+  .section-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+  }
+  .ico-blue  { background: rgba(58,111,216,0.2);  color: var(--blue-light); border: 1px solid var(--blue); }
+  .ico-gold  { background: rgba(201,168,76,0.2);  color: var(--gold-light); border: 1px solid var(--gold); }
+  .ico-red   { background: rgba(192,57,43,0.2);   color: #ff8080; border: 1px solid var(--red); }
+  .ico-green { background: rgba(39,174,96,0.2);   color: var(--green-light); border: 1px solid var(--green); }
+  .ico-purple{ background: rgba(142,68,173,0.2);  color: var(--purple-light); border: 1px solid var(--purple); }
+
+  .section-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+  .section-arrow {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    transition: transform 0.25s;
+  }
+  .section.open .section-arrow { transform: rotate(180deg); color: var(--blue-light); }
+
+  .section-body {
+    display: none;
+    padding: 20px 24px 24px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .section.open .section-body { display: block; }
+
+  /* ── SUBSECTION ── */
+  .sub {
+    margin: 18px 0;
+  }
+  .sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--surface3);
+  }
+  .sub2-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--blue-light);
+    margin: 14px 0 6px;
+    font-style: italic;
+  }
+  .sub3-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green-light);
+    margin: 10px 0 5px;
+  }
+
+  /* ── CONTENT ELEMENTS ── */
+  p { margin-bottom: 10px; font-size: 0.88rem; color: var(--text); }
+
+  ul, ol { padding-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 5px; font-size: 0.88rem; color: var(--text); }
+  li::marker { color: var(--text-muted); }
+
+  strong { color: var(--gold-light); font-weight: 600; }
+  em { color: var(--text-muted); font-style: italic; }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    border-top: 3px solid;
+  }
+  .card.blue  { border-top-color: var(--blue); }
+  .card.gold  { border-top-color: var(--gold); }
+  .card.red   { border-top-color: var(--red-light); }
+  .card.green { border-top-color: var(--green); }
+  .card.purple{ border-top-color: var(--purple); }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .card.blue .card-name   { color: var(--blue-light); }
+  .card.gold .card-name   { color: var(--gold-light); }
+  .card.red .card-name    { color: #ff8080; }
+  .card.green .card-name  { color: var(--green-light); }
+  .card.purple .card-name { color: var(--purple-light); }
+  .card p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+
+  /* ── KEY DATES TABLE ── */
+  .dates-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.82rem; }
+  .dates-table th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .dates-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .dates-table tr:hover td { background: var(--surface); }
+  .dates-table .date-col {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--gold-light);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-left: 3px solid;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .alert-blue { border-color: var(--blue); background: rgba(58,111,216,0.08); }
+  .alert-gold { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .alert-red  { border-color: var(--red); background: rgba(192,57,43,0.08); }
+  .alert-green{ border-color: var(--green); background: rgba(39,174,96,0.08); }
+  .alert-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .alert-blue .alert-label  { color: var(--blue-light); }
+  .alert-gold .alert-label  { color: var(--gold-light); }
+  .alert-red .alert-label   { color: #ff8080; }
+  .alert-green .alert-label { color: var(--green-light); }
+
+  /* ── ARTICLE BOX ── */
+  .article-box {
+    background: var(--surface2);
+    border: 1px solid var(--surface3);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+  .article-box .art-num { color: var(--gold-light); font-weight: 600; }
+  .article-box .art-text { color: var(--text); margin-top: 4px; font-style: italic; font-family: 'Source Serif 4', serif; font-size: 0.83rem; }
+
+  /* ── TWO COLS ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .col-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .col-box-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; margin: 12px 0; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 1px; background: var(--surface3);
+  }
+  .tl-item { position: relative; margin-bottom: 14px; }
+  .tl-dot {
+    position: absolute; left: -23px; top: 6px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    border: 1px solid var(--blue-light);
+  }
+  .tl-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--blue-light);
+    font-weight: 600;
+  }
+  .tl-text { font-size: 0.83rem; color: var(--text); }
+
+  /* ── HIGHLIGHT ── */
+  .hl { background: rgba(201,168,76,0.15); color: var(--gold-light); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+  .hl-blue { background: rgba(58,111,216,0.15); color: var(--blue-light); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+  .hl-red  { background: rgba(192,57,43,0.15); color: #ff8080; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+  .hl-green{ background: rgba(39,174,96,0.15); color: var(--green-light); padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+
+  /* ── SCHEMA BOX ── */
+  .schema {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 14px 0;
+    text-align: center;
+  }
+  .schema-flow {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 8px 0;
+  }
+  .schema-node {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    color: var(--text);
+  }
+  .schema-arrow { color: var(--text-dim); font-size: 1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 30px 40px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SEARCH HIGHLIGHT ── */
+  mark { background: rgba(201,168,76,0.35); color: var(--gold-light); border-radius: 2px; padding: 0 2px; }
+
+  /* ── OPEN ALL BUTTON ── */
+  .controls { display: flex; gap: 10px; margin: 20px 0 10px; }
+  .ctrl-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .ctrl-btn:hover { background: var(--surface2); color: var(--text); border-color: var(--blue); }
+
+  /* ── HIDDEN FOR SEARCH ── */
+  .hidden { display: none !important; }
+</style>
 </head>
 <body>
 
-    <h1>Agenda Férias & Grandes Fêtes 2026</h1>
-    <p class="intro">L'annuaire de référence du Sud-Ouest et de l'Espagne (+50 000 visiteurs).</p>
+<header>
+  <div class="flag-bar"><span class="f1"></span><span class="f2"></span><span class="f3"></span></div>
+  <h1>Institutions <span>Politiques &amp; Administratives</span></h1>
+  <p class="subtitle">Fiche de révision complète — UPPA · Droit public</p>
+  <div class="header-meta">
+    <span class="badge badge-blue">Chapitre 1 · Institutions politiques</span>
+    <span class="badge badge-gold">Chapitre 2 · Administration de l'État</span>
+    <span class="badge badge-red">Chapitre 3 · Décentralisation</span>
+  </div>
+</header>
 
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 Rechercher une ville, une fête, ou un département (ex: 40)...">
+<div class="search-bar">
+  <span class="search-label">🔍 Recherche</span>
+  <input type="text" id="searchInput" placeholder="Ex : préfet, cohabitation, QPC, conseil constitutionnel…">
+</div>
+
+<div class="toc">
+  <p class="toc-title">Sommaire rapide</p>
+  <div class="toc-grid">
+    <a class="toc-link" href="#intro">▸ Notions fondamentales (État, souveraineté, Constitution)</a>
+    <a class="toc-link" href="#hist">▸ Histoire constitutionnelle française</a>
+    <a class="toc-link" href="#const58">▸ Élaboration de la Constitution de 1958</a>
+    <a class="toc-link" href="#valeurs">▸ Valeurs de la Ve République</a>
+    <a class="toc-link" href="#president">▸ Président de la République</a>
+    <a class="toc-link" href="#gouv">▸ Le Gouvernement</a>
+    <a class="toc-link" href="#parlement">▸ Le Parlement</a>
+    <a class="toc-link" href="#cc">▸ Conseil Constitutionnel &amp; QPC</a>
+    <a class="toc-link" href="#centralisation">▸ Centralisation &amp; déconcentration</a>
+    <a class="toc-link" href="#admcentrale">▸ Institutions administratives centrales</a>
+    <a class="toc-link" href="#prefet">▸ Le Préfet</a>
+    <a class="toc-link" href="#decentral">▸ Décentralisation &amp; collectivités territoriales</a>
+    <a class="toc-link" href="#fragilites">▸ Fragilités du système décentralisé</a>
+    <a class="toc-link" href="#juridictions">▸ Juridictions ordinaires</a>
+  </div>
+</div>
+
+<main>
+
+<div class="controls">
+  <button class="ctrl-btn" onclick="openAll()">▼ Tout ouvrir</button>
+  <button class="ctrl-btn" onclick="closeAll()">▲ Tout fermer</button>
+</div>
+
+<!-- ================================================================
+     PARTIE PRÉLIMINAIRE
+     ================================================================ -->
+
+<div class="chapter-header">
+  <div class="chapter-num">0</div>
+  <div class="chapter-title">
+    <h2>Notions fondamentales</h2>
+    <p>État · Souveraineté · Constitution · Institutions publiques et privées</p>
+  </div>
+</div>
+
+<!-- État -->
+<div class="section" id="intro">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-blue">01</span>
+    <span class="section-title">L'État — définition, théories et formes</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Définition de l'État</p>
+      <p>Une institution est une <strong>structure juridique dotée de la personnalité morale</strong> — entité abstraite créée par le droit, distincte des individus qui la composent, vouée à durer au-delà de leur vie. La plus ancienne institution est l'Église catholique ; la première institution laïque est l'État.</p>
+      <div class="alert alert-gold">
+        <div class="alert-label">⚠ Définition Max Weber à retenir</div>
+        <em>« L'État est une organisation politique résultant de la fixation sur un territoire déterminé d'une collectivité humaine relativement homogène, régie par un pouvoir institutionnalisé comportant le monopole de la contrainte organisée. »</em>
+      </div>
+      <p><strong>3 éléments constitutifs d'un État :</strong> un <strong>territoire</strong>, une <strong>population</strong> et la <strong>souveraineté</strong>.</p>
     </div>
 
-    <div class="tabs" id="tabs-container">
-        <button class="tab-btn active" data-filter="all">Toutes</button>
-        <button class="tab-btn" data-filter="FR">🇫🇷 Sud-Ouest (FR)</button>
-        <button class="tab-btn" data-filter="ES">🇪🇸 Espagne</button>
-        <button class="tab-btn" data-filter="basque">🟢🔴⚪ Pays Basque</button>
+    <div class="sub">
+      <p class="sub-title">Les théories du contrat social</p>
+      <div class="card-grid">
+        <div class="card red">
+          <div class="card-name">Hobbes — Léviathan (1651)</div>
+          <p>L'Homme est naturellement mauvais (<em>« l'Homme est un loup pour l'Homme »</em>). État de nature violent → souveraineté étatique illimitée pour pacifier la société.</p>
+        </div>
+        <div class="card blue">
+          <div class="card-name">Locke — Traité du Gouvernement Civil (1690)</div>
+          <p>Les Hommes sont naturellement libres et égaux. État de nature pacifique mais imparfait → le contrat permet encore plus de liberté et de sécurité.</p>
+        </div>
+        <div class="card green">
+          <div class="card-name">Rousseau — Du Contrat Social (1762)</div>
+          <p>L'Homme est relativement bon. Le contrat social ne doit pas lui faire perdre sa liberté. Chaque citoyen conserve une part de souveraineté. Pouvoir pris par les citoyens réunis en assemblée.</p>
+        </div>
+        <div class="card gold">
+          <div class="card-name">Jean Bodin — 6 Livres de la République (1576)</div>
+          <p>Élabore une conception moderne de l'État fondée sur le <strong>principe de souveraineté</strong>.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="container" id="events-list"></div>
+    <div class="sub">
+      <p class="sub-title">Formes d'organisation étatique</p>
+      <div class="two-col">
+        <div class="col-box">
+          <div class="col-box-title" style="color:var(--blue-light)">Types d'État</div>
+          <ul>
+            <li><strong>État unitaire</strong> — France</li>
+            <li><strong>État régional</strong> — Espagne</li>
+            <li><strong>État fédéral</strong> — États-Unis</li>
+          </ul>
+        </div>
+        <div class="col-box">
+          <div class="col-box-title" style="color:var(--gold-light)">Régimes politiques</div>
+          <ul>
+            <li><strong>Démocratie</strong></li>
+            <li><strong>Régime autoritaire</strong></li>
+            <li><strong>Régime totalitaire</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script>
-        // JAVASCRIPT - Les Données (Focus Sud-Ouest et Espagne > 50k visiteurs)
-        const events = [
-            { name: "Las Fallas", city: "Valence", dept: "Communauté valencienne", country: "ES", date: "2026-03-15", visitors: "~ 1 000 000", desc: "Fête traditionnelle spectaculaire avec des sculptures géantes.", link: "https://www.fallas.com" },
-            { name: "Foire au Jambon", city: "Bayonne", dept: "Pyrénées-Atlantiques (64)", country: "FR", region: "basque", date: "2026-04-23", visitors: "~ 200 000", desc: "Célébration de la gastronomie basque et du célèbre jambon.", link: "https://www.bayonne.fr" },
-            { name: "Feria de Pâques", city: "Arles", dept: "Bouches-du-Rhône (13)", country: "FR", date: "2026-04-03", visitors: "~ 500 000", desc: "L'ouverture de la saison tauromachique en France.", link: "https://www.arenes-arles.com" },
-            { name: "Fêtes de Biarritz", city: "Biarritz", dept: "Pyrénées-Atlantiques (64)", country: "FR", region: "basque", date: "2026-04-10", visitors: "~ 50 000", desc: "Célébrations printanières sur la côte basque.", link: "https://www.biarritz.fr" },
-            { name: "Feria de Abril", city: "Séville", dept: "Andalousie", country: "ES", date: "2026-04-19", visitors: "~ 3 000 000", desc: "La plus grande fête andalouse. Casetas, flamenco...", link: "https://visitasevilla.es" },
-            { name: "Feria del Caballo", city: "Jerez de la Frontera", dept: "Andalousie", country: "ES", date: "2026-05-02", visitors: "~ 1 000 000", desc: "L'élégance du cheval andalou, vin de Xérès et flamenco.", link: "https://www.jerez.es" },
-            { name: "Fête des Bandas", city: "Condom", dept: "Gers (32)", country: "FR", date: "2026-05-08", visitors: "~ 50 000", desc: "Le plus grand rassemblement de musiques de cuivres.", link: "https://www.festivaldebandas.fr" },
-            { name: "Féria de Pentecôte", city: "Nîmes", dept: "Gard (30)", country: "FR", date: "2026-05-21", visitors: "~ 1 000 000", desc: "Six jours de fête autour des magnifiques arènes romaines.", link: "https://www.nimes.fr" },
-            { name: "Pentecôte à Vic", city: "Vic-Fezensac", dept: "Gers (32)", country: "FR", date: "2026-05-22", visitors: "~ 100 000", desc: "Féria gersoise réputée pour ses corridas toristas.", link: "https://www.clubtaurinvicois.com" },
-            { name: "Fêtes de la Saint-Jean", city: "Saint-Jean-de-Luz", dept: "Pyrénées-Atlantiques (64)", country: "FR", region: "basque", date: "2026-06-20", visitors: "~ 80 000", desc: "Fêtes patronales basques avec feux traditionnels et pelote.", link: "https://www.saint-jean-de-luz.com" },
-            { name: "Fêtes de Saint-Sever", city: "Saint-Sever", dept: "Landes (40)", country: "FR", date: "2026-06-24", visitors: "~ 50 000", desc: "Ambiance landaise authentique, cavalcade et gastronomie.", link: "https://www.saint-sever.fr" },
-            { name: "Fêtes de San Marcial", city: "Irun", dept: "Guipuscoa", country: "ES", region: "basque", date: "2026-06-30", visitors: "~ 200 000", desc: "Défilé historique des Alardes au son des fifres et tambours.", link: "https://www.irun.org" },
-            { name: "Féria de l'Aluze", city: "Eauze", dept: "Gers (32)", country: "FR", date: "2026-07-05", visitors: "~ 50 000", desc: "La capitale de l'Armagnac se pare de musique.", link: "https://www.mairie-eauze.fr" },
-            { name: "San Fermín", city: "Pampelune", dept: "Navarre", country: "ES", date: "2026-07-06", visitors: "~ 1 000 000", desc: "Mondialement connue pour ses encierros (lâchers de taureaux).", link: "https://www.sanfermin.com" },
-            { name: "Féria de Céret", city: "Céret", dept: "Pyrénées-Orientales (66)", country: "FR", date: "2026-07-11", visitors: "~ 50 000", desc: "Féria catalane authentique, réputée pour ses spectacles taurins.", link: "https://www.ceret-de-toros.com" },
-            { name: "Fêtes de la Madeleine", city: "Mont-de-Marsan", dept: "Landes (40)", country: "FR", date: "2026-07-15", visitors: "~ 400 000", desc: "L'une des plus grandes ferias de France. Dress code : en bleu et blanc !", link: "https://regiefetes.montdemarsan.fr" },
-            { name: "Fêtes de Bayonne", city: "Bayonne", dept: "Pyrénées-Atlantiques (64)", country: "FR", region: "basque", date: "2026-07-15", visitors: "~ 1 000 000", desc: "L'incontournable rendez-vous en rouge et blanc.", link: "https://fetes.bayonne.fr" },
-            { name: "Fêtes de Tyrosse", city: "Saint-Vincent-de-Tyrosse", dept: "Landes (40)", country: "FR", date: "2026-07-23", visitors: "~ 50 000", desc: "Une feria à taille humaine avec un fort attachement aux traditions.", link: "https://www.tyrosseville.com" },
-            { name: "Fêtes d'Orthez", city: "Orthez", dept: "Pyrénées-Atlantiques (64)", country: "FR", date: "2026-07-24", visitors: "~ 50 000", desc: "Rendez-vous béarnais chaleureux autour des arènes du Pesqué.", link: "https://www.mairie-orthez.fr" },
-            { name: "Fiestas de la Virgen Blanca", city: "Vitoria-Gasteiz", dept: "Alava", country: "ES", region: "basque", date: "2026-08-04", visitors: "~ 400 000", desc: "La descente de Celedón qui marque le début d'une immense fête.", link: "https://www.vitoria-gasteiz.org" },
-            { name: "Fêtes de Soustons", city: "Soustons", dept: "Landes (40)", country: "FR", date: "2026-08-06", visitors: "~ 50 000", desc: "Fêtes conviviales au bord du lac, course landaise et esprit festif.", link: "https://www.mairie-soustons.fr" },
-            { name: "Fêtes de Parentis", city: "Parentis-en-Born", dept: "Landes (40)", country: "FR", date: "2026-08-07", visitors: "~ 50 000", desc: "Féria de Sen Bertomiu, réputée pour ses novilladas.", link: "https://www.parentis.com" },
-            { name: "Semana Grande", city: "Saint-Sébastien", dept: "Guipuscoa", country: "ES", region: "basque", date: "2026-08-08", visitors: "~ 1 000 000", desc: "La grande semaine Donostiarra avec son célèbre concours de feux d'artifice.", link: "https://www.sansebastianturismoa.eus" },
-            { name: "Féria de Dax", city: "Dax", dept: "Landes (40)", country: "FR", date: "2026-08-12", visitors: "~ 800 000", desc: "Gros événement en rouge et blanc, musique omniprésente et arènes.", link: "https://daxlaferia.fr" },
-            { name: "Féria de Béziers", city: "Béziers", dept: "Hérault (34)", country: "FR", date: "2026-08-12", visitors: "~ 700 000", desc: "Le grand rendez-vous de l'Hérault. Corridas, bodegas et ambiance.", link: "https://www.ville-beziers.fr" },
-            { name: "Féria de Málaga", city: "Málaga", dept: "Andalousie", country: "ES", date: "2026-08-15", visitors: "~ 1 000 000", desc: "Fête de jour dans le centre historique et grande fête foraine de nuit.", link: "https://visita.malaga.eu" },
-            { name: "Aste Nagusia", city: "Bilbao", dept: "Biscaye", country: "ES", region: "basque", date: "2026-08-22", visitors: "~ 1 500 000", desc: "La grande semaine de Bilbao, lancée par la mascotte Marijaia.", link: "https://www.bilbaoturismo.net" },
-            { name: "Fêtes de Mimizan", city: "Mimizan", dept: "Landes (40)", country: "FR", date: "2026-08-25", visitors: "~ 50 000", desc: "Fêtes de fin d'été sur la côte landaise, ambiance estivale et bandas.", link: "https://www.mimizan-tourisme.com" },
-            { name: "Féria de Carcassonne", city: "Carcassonne", dept: "Aude (11)", country: "FR", date: "2026-08-27", visitors: "~ 400 000", desc: "Ambiance sévillane, tapas et flamenco au pied de la célèbre Cité.", link: "https://www.carcassonne.org" },
-            { name: "Grand Pruneau Show", city: "Agen", dept: "Lot-et-Garonne (47)", country: "FR", date: "2026-08-28", visitors: "~ 80 000", desc: "Le grand festival agenais mêlant musique en plein air et gastronomie locale.", link: "https://www.agen.fr" },
-            { name: "Fiestas del Pilar", city: "Saragosse", dept: "Aragon", country: "ES", date: "2026-10-10", visitors: "~ 3 000 000", desc: "L'immense offrande de fleurs à la Vierge du Pilier.", link: "https://www.zaragoza.es" }
-        ];
+<!-- Souveraineté -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-gold">02</span>
+    <span class="section-title">La souveraineté — populaire vs nationale</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Évolution historique</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">Ancien Régime</span><div class="tl-text">Souveraineté d'abord incarnée par le clergé (régimes théocratiques), puis par le roi. Les citoyens sont exclus de l'exercice du pouvoir politique.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">1789</span><div class="tl-text">Révolution française : les citoyens incarnent désormais la souveraineté. Apparition des deux conceptions rivales.</div></div>
+      </div>
+    </div>
 
-        let currentSearchQuery = "";
-        let currentTabFilter = "all";
+    <div class="sub">
+      <p class="sub-title">Deux conceptions de la souveraineté</p>
+      <div class="two-col">
+        <div class="col-box" style="border-top:3px solid var(--green)">
+          <div class="col-box-title" style="color:var(--green-light)">Souveraineté populaire (Rousseau)</div>
+          <ul>
+            <li>Le peuple est le <strong>seul titulaire</strong> de la souveraineté</li>
+            <li>Chaque citoyen détient une <strong>fraction</strong> de souveraineté</li>
+            <li>Démocratie <strong>directe</strong> : référendums, assemblées citoyennes</li>
+            <li>Expression de la <strong>volonté générale</strong></li>
+            <li><em>Limite : difficile de réunir le peuple pour voter une loi</em></li>
+          </ul>
+        </div>
+        <div class="col-box" style="border-top:3px solid var(--blue)">
+          <div class="col-box-title" style="color:var(--blue-light)">Souveraineté nationale (révolutionnaires français)</div>
+          <ul>
+            <li>But : <strong>déposséder le roi</strong> de sa souveraineté (Art. 3 DDHC)</li>
+            <li>La Nation est une <strong>abstraction</strong></li>
+            <li>Les gouvernants sont <strong>élus</strong> pour représenter la Nation</li>
+            <li>Ils ne peuvent recevoir d'ordres ni être déposés par les citoyens</li>
+            <li>Démocratie <strong>représentative</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-blue">
+        <div class="alert-label">📌 En pratique — Constitution de 1946 et 1958</div>
+        <em>« La souveraineté nationale appartient au peuple »</em> → système <strong>mixte</strong> : référendums (conception populaire) + système représentatif (conception nationale).
+      </div>
+    </div>
+  </div>
+</div>
 
-        function render() {
-            const list = document.getElementById('events-list');
-            
-            let filteredEvents = events.filter(e => {
-                const textToSearch = (e.name + " " + e.city + " " + e.dept).toLowerCase();
-                const matchesSearch = textToSearch.includes(currentSearchQuery.toLowerCase());
-                
-                let matchesTab = true;
-                if (currentTabFilter === "FR") matchesTab = e.country === "FR";
-                if (currentTabFilter === "ES") matchesTab = e.country === "ES";
-                if (currentTabFilter === "basque") matchesTab = e.region === "basque";
+<!-- Constitution -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-red">03</span>
+    <span class="section-title">La Constitution — rôles et hiérarchie des normes</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Les 3 rôles de la Constitution</p>
+      <ul>
+        <li><strong>Norme suprême</strong> — d'un point de vue <em>matériel</em> : encadre l'exercice du pouvoir, le suffrage, la protection des droits ; d'un point de vue <em>formel</em> : procédure spécifique (pouvoir constituant originaire).</li>
+        <li><strong>Volet institutionnel</strong> — institutions de la Ve, compétences du Parlement, du Gouvernement, pouvoir juridictionnel.</li>
+        <li><strong>Volet substantiel</strong> — protection des droits et libertés.</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Hiérarchie des normes (Kelsen)</p>
+      <div class="schema">
+        <div class="schema-flow">
+          <div class="schema-node" style="border-color:var(--gold);color:var(--gold-light)">Constitution</div>
+          <span class="schema-arrow">›</span>
+          <div class="schema-node">Traités internationaux</div>
+          <span class="schema-arrow">›</span>
+          <div class="schema-node">Lois</div>
+          <span class="schema-arrow">›</span>
+          <div class="schema-node">Actes administratifs (décrets, arrêtés…)</div>
+          <span class="schema-arrow">›</span>
+          <div class="schema-node">Contrats</div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px">Plus une décision administrative est spécifique, plus elle est basse dans la hiérarchie</p>
+      </div>
+      <div class="two-col">
+        <div class="alert alert-blue"><div class="alert-label">Contrôle de constitutionnalité</div>Effectué par le <strong>Conseil Constitutionnel</strong></div>
+        <div class="alert alert-gold"><div class="alert-label">Contrôle de conventionnalité</div>Effectué par les <strong>juridictions ordinaires</strong> (Conseil d'État…)</div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Droit public vs droit privé</p>
+      <div class="two-col">
+        <div class="col-box">
+          <div class="col-box-title" style="color:var(--blue-light)">Droit public</div>
+          <ul>
+            <li><strong>Droit constitutionnel</strong> — lié à la Constitution</li>
+            <li><strong>Droit administratif</strong> — rapports entre administration et personnes privées</li>
+          </ul>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px"><em>Ex : demande de permis de construire à la mairie</em></p>
+        </div>
+        <div class="col-box">
+          <div class="col-box-title" style="color:var(--gold-light)">Droit privé</div>
+          <ul>
+            <li>Rapports entre particuliers</li>
+            <li>Droit civil, droit du travail, droit économique…</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                return matchesSearch && matchesTab;
-            });
 
-            filteredEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+<!-- ================================================================
+     CHAPITRE 1 — INSTITUTIONS POLITIQUES
+     ================================================================ -->
 
-            if (filteredEvents.length === 0) {
-                list.innerHTML = `<div class="no-results">Aucune fête ne correspond à votre recherche 🐂</div>`;
-                return;
-            }
+<div class="chapter-header">
+  <div class="chapter-num">1</div>
+  <div class="chapter-title">
+    <h2>Les Institutions Politiques</h2>
+    <p>Fondements historiques · Ve République · Président · Gouvernement · Parlement · Conseil Constitutionnel</p>
+  </div>
+</div>
 
-            let htmlContent = "";
-            let currentMonth = "";
+<!-- Histoire constitutionnelle -->
+<div class="section" id="hist">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-red">📜</span>
+    <span class="section-title">Histoire constitutionnelle française (1789 → 1958)</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Chronologie des régimes</p>
+      <table class="dates-table">
+        <thead><tr><th>Date</th><th>Régime / Événement</th><th>Points clés</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">1789</td><td>Révolution française</td><td>Principes structurels : droits de l'Homme, souveraineté nationale, séparation des pouvoirs (DDHC)</td></tr>
+          <tr><td class="date-col">1791</td><td>Monarchie constitutionnelle (Constit. de 1791)</td><td>Tient peu : tensions politiques, économiques, perte de confiance dans le roi</td></tr>
+          <tr><td class="date-col">1792-1795</td><td>Convention / Comité de salut public</td><td>Pouvoir concentré dans l'assemblée. Constitution montagnarde de 1793, jamais appliquée</td></tr>
+          <tr><td class="date-col">1795-1799</td><td>Directoire</td><td>Système plus modéré, vraie séparation des pouvoirs → s'effondre coup d'État de Napoléon (1799)</td></tr>
+          <tr><td class="date-col">1799-1815</td><td>Consulat / Empire</td><td>Pouvoir personnel (césarisme démocratique) : assemblées existent mais tout est contrôlé dans l'ombre</td></tr>
+          <tr><td class="date-col">1815-1848</td><td>2 Monarchies constitutionnelles</td><td>Suffrage censitaire masculin, régime parlementaire (gouvernement responsable devant assemblées)</td></tr>
+          <tr><td class="date-col">1848</td><td>IIe République</td><td>Suffrage universel masculin, président élu directement → forte légitimité ; séparation rigide sans mécanisme de résolution des conflits</td></tr>
+          <tr><td class="date-col">1851-1870</td><td>Second Empire (Napoléon III)</td><td>Coup d'État. Pouvoir personnel concentré chez l'Empereur. Chute : défaite contre la Prusse</td></tr>
+          <tr><td class="date-col">1870-1940</td><td>IIIe République</td><td>Lois constit. de 1875 : régime parlementaire. Président s'efface → pouvoir réel au gouvernement et au parlement. Forte instabilité gouvernementale</td></tr>
+          <tr><td class="date-col">1940-1944</td><td>Régime de Vichy / GPRF (De Gaulle)</td><td>Vichy parallèlement à De Gaulle qui organise la libération (CNR, GPRF)</td></tr>
+          <tr><td class="date-col">1946</td><td>IVe République</td><td>Tente de corriger la IIIe → échec. Gouvernements fragiles, crise algérienne → effondrement</td></tr>
+          <tr><td class="date-col">1958</td><td>Ve République</td><td>Crise algérienne → retour De Gaulle → nouvelle Constitution</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-            filteredEvents.forEach(e => {
-                const eventDate = new Date(e.date);
-                eventDate.setHours(0,0,0,0);
-                const today = new Date();
-                today.setHours(0,0,0,0);
-                
-                const monthName = eventDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-                if (monthName !== currentMonth) {
-                    htmlContent += `<div class="month-header">${monthName}</div>`;
-                    currentMonth = monthName;
-                }
+<!-- Constitution de 1958 -->
+<div class="section" id="const58">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-gold">58</span>
+    <span class="section-title">L'élaboration de la Constitution de 1958</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Chronologie du passage IVe → Ve République</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">3 juin 1958</span><div class="tl-text"><strong>Loi du 3 juin 1958</strong> — acte fondateur. Détermine les grands principes (séparation des pouvoirs, suffrage universel, responsabilité du gouvernement devant le Parlement) et la procédure d'élaboration. Confié au gouvernement <strong>De Gaulle</strong> investi le 1er juin 1958.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">3 sept. 1958</span><div class="tl-text">Projet définitif adopté en Conseil des ministres sous la présidence de René Coty, avec soutien unanime des partis politiques y compris communistes.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">28 sept. 1958</span><div class="tl-text">Référendum populaire : <strong>85% de OUI</strong>.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">4 oct. 1958</span><div class="tl-text"><strong>Promulgation</strong> de la Constitution de la Ve République.</div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">L'astuce juridique de la loi du 3 juin</p>
+      <p>La procédure normale de révision (art. 90 de la Constitution de 1946) était trop longue. Le gouvernement a <strong>repris une résolution déjà partiellement adoptée</strong> par le Parlement portant sur la modification de l'art. 90, ce qui a permis de gagner beaucoup de temps et de faire voter une loi ordinaire ayant la valeur d'une loi constitutionnelle.</p>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Composition du comité d'élaboration</p>
+      <p>Comité interministériel dirigé par De Gaulle et 4 ministres d'État : <strong>Mollet, Pflimlin, Jacquinot</strong> et <strong>Debré</strong>. Représentants de tous les courants politiques <em>à l'exception des communistes</em>.</p>
+    </div>
+  </div>
+</div>
 
-                const diffTime = eventDate - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                let countdownText = diffDays < 0 ? "L'événement est passé" : diffDays === 0 ? "C'est aujourd'hui !" : `Dans ${diffDays} jours`;
-                const flag = e.country === "FR" ? "🇫🇷" : "🇪🇸";
-                
-                htmlContent += `
-                    <div class="card ${e.country.toLowerCase()} ${diffDays < 0 ? 'past' : ''}">
-                        <div class="card-header">
-                            <div>
-                                <h2>${flag} ${e.name}</h2>
-                                <div class="location">${e.city} <span class="dept-info">(${e.dept})</span></div>
-                            </div>
-                        </div>
-                        <span class="badge">👥 ${e.visitors} visiteurs</span>
-                        <div class="date-info">📅 ${eventDate.toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'})}</div>
-                        <div class="description">${e.desc}</div>
-                        <div class="countdown">${countdownText}</div>
-                        <a href="${e.link}" target="_blank" class="btn">Visiter le site officiel</a>
-                    </div>
-                `;
-            });
+<!-- Valeurs -->
+<div class="section" id="valeurs">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-blue">Val</span>
+    <span class="section-title">Les valeurs de la Ve République &amp; le bloc de constitutionnalité</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">A — L'ordre social républicain (art. 1er)</p>
+      <div class="card-grid">
+        <div class="card blue">
+          <div class="card-name">Souveraineté nationale</div>
+          <p>Affirmée par l'art. 3 de la Constitution de 1958. Appartient au peuple par la voie du référendum.</p>
+        </div>
+        <div class="card green">
+          <div class="card-name">Principe démocratique</div>
+          <p>Suffrage universel direct pour tous. Sous la Ve, sert aussi à élire le Président. Implique le respect des libertés fondamentales.</p>
+        </div>
+        <div class="card gold">
+          <div class="card-name">Tradition républicaine</div>
+          <p><strong>Laïcité</strong> : séparation des Églises et de l'État (loi de 1905). Liberté de culte.<br><strong>Sociale</strong> : droits économiques et sociaux (Préambule de 1946).<br><strong>Indivisible</strong> : un seul peuple français, une seule langue.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">B — Le bloc de constitutionnalité</p>
+      <div class="alert alert-gold">
+        <div class="alert-label">📌 Décision fondatrice — 16 juillet 1971 (liberté d'association)</div>
+        Donne naissance à l'expression "bloc de constitutionnalité" en intégrant la DDHC et le Préambule de 1946.
+      </div>
+      <table class="dates-table">
+        <thead><tr><th>Texte</th><th>Contenu</th><th>Type de droits</th></tr></thead>
+        <tbody>
+          <tr><td>Constitution de 1958</td><td>Organisation institutionnelle</td><td>—</td></tr>
+          <tr><td>DDHC (1789)</td><td>Libertés individuelles, droits civiques et politiques</td><td>1re génération — droits centrés sur l'individu</td></tr>
+          <tr><td>Préambule de 1946</td><td>Droits sociaux, économiques et culturels (PPNT)</td><td>2e génération — droits-créance (intervention de l'État)</td></tr>
+          <tr><td>PFRLR</td><td>Principes Fondamentaux Reconnus par les Lois de la République (ex : liberté d'enseignement, liberté d'association)</td><td>Reconnus par le Conseil Constitutionnel — 3 critères : base textuelle avant 1946, principe général, application continue</td></tr>
+          <tr><td>Charte de l'environnement (2004)</td><td>Droit de vivre dans un environnement sain</td><td>3e génération</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-            list.innerHTML = htmlContent;
-        }
+<!-- PRÉSIDENT -->
+<div class="section" id="president">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-gold">PR</span>
+    <span class="section-title">Le Président de la République — clé de voûte des institutions</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
 
-        document.getElementById('search-input').addEventListener('input', function(event) {
-            currentSearchQuery = event.target.value;
-            render();
-        });
+    <div class="sub">
+      <p class="sub-title">I — Élection du Président</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">Constitution de 1958</span><div class="tl-text">Élection par un <strong>collège électoral</strong> (parlementaires + élus locaux) — suffrage universel indirect.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--gold)"></div><span class="tl-year">1962</span><div class="tl-text"><strong>Révision constitutionnelle</strong> : introduction du <strong>suffrage universel direct</strong> par référendum (art. 11), approuvé à 62%. De Gaulle contourne le Parlement (qui aurait bloqué via l'art. 89), notamment après la tentative d'assassinat, pour donner de la légitimité à son successeur.</div></div>
+      </div>
+      <p><strong>Conditions d'éligibilité :</strong> conditions de droit commun (art. 3 Constit.) + <strong>500 parrainages</strong> de maires. Élection 20 à 35 jours avant la fin du mandat.</p>
+    </div>
 
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                currentTabFilter = this.getAttribute('data-filter');
-                render();
-            });
-        });
+    <div class="sub">
+      <p class="sub-title">II — Du septennat au quinquennat</p>
+      <table class="dates-table">
+        <thead><tr><th>Date</th><th>Événement</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">1873</td><td>Instauration du <strong>septennat</strong> (7 ans) pour des raisons conjoncturelles : laisser du temps au prétendant monarchiste (comte de Chambord). L'amendement Wallon entérine cette décision.</td></tr>
+          <tr><td class="date-col">1962</td><td>Élection présidentielle au suffrage universel direct → problème : si les législatives donnent une majorité différente, <strong>cohabitation</strong>.</td></tr>
+          <tr><td class="date-col">1973</td><td>Tentative de Pompidou de réduire à 5 ans → n'aboutit pas (craignait de ne pas réunir la majorité des 3/5e au Congrès).</td></tr>
+          <tr><td class="date-col">1986</td><td><strong>1re cohabitation</strong> : Mitterrand (gauche) / Chirac (droite - PM)</td></tr>
+          <tr><td class="date-col">1993</td><td><strong>2e cohabitation</strong> : Mitterrand / Balladur</td></tr>
+          <tr><td class="date-col">1997-2002</td><td><strong>3e cohabitation</strong> (la plus longue) : Chirac / Jospin</td></tr>
+          <tr><td class="date-col">2000</td><td>Révision constitutionnelle → <strong>quinquennat</strong> (5 ans), art. 6. Référendum : OUI à 73% mais 70% d'abstention.</td></tr>
+          <tr><td class="date-col">2002</td><td><strong>Inversion du calendrier électoral</strong> (art. 121 Code électoral) : présidentielle d'abord, législatives ensuite → les législatives deviennent secondaires (abstention > 50% en 2017 et 2022).</td></tr>
+          <tr><td class="date-col">2008</td><td>Loi constitutionnelle : limitation à <strong>deux mandats consécutifs</strong>.</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-        render();
-    </script>
-    
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-            .then(() => console.log('Service Worker enregistré avec succès !'))
-            .catch((error) => console.log('Erreur du Service Worker :', error));
-        }
-    </script>
+    <div class="sub">
+      <p class="sub-title">III — Cessation des fonctions</p>
+      <ul>
+        <li>Fin du quinquennat, ou après 2 mandats consécutifs (pas d'interdiction après une interruption).</li>
+        <li><strong>Démission</strong> : seul De Gaulle (1969, après échec du référendum sur la régionalisation et le Sénat).</li>
+        <li><strong>Décès</strong> : Georges Pompidou, 2 avril 1974.</li>
+        <li><strong>Destitution</strong> (art. 68 Constit., précisé par loi organique 2014) : en cas de manquement manifestement incompatible avec l'exercice du mandat. Procédure : signature par 1/10e des membres de l'AN → Bureau → Commission des lois → vote des 2 chambres à 2/3 → Haute Cour (2 mois, présidée par le président de l'AN). <em>Tentatives : LR contre Hollande (2016), LFI contre Macron (2024, 2025) — toutes rejetées.</em></li>
+        <li><strong>Intérim</strong> : président du Sénat (sans pouvoirs de referendum ni de dissolution). Vécu 2 fois sous la Ve : départ de De Gaulle et mort de Pompidou → Alain Poher. A ratifié la Convention EDH pendant l'intérim.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — Statut juridictionnel : l'irresponsabilité</p>
+      <p class="sub2-title">A. Irresponsabilité pour les actes accomplis dans l'exercice du mandat (art. 67)</p>
+      <ul>
+        <li>Irresponsabilité <strong>absolue et permanente</strong> dans tous les domaines (politique, civil, pénal, administratif).</li>
+        <li>S'applique <strong>même après la cessation du mandat</strong> pour les actes accomplis en cette qualité.</li>
+        <li><strong>2 exceptions</strong> : poursuites devant la <strong>CPI</strong> (crimes contre l'humanité — art. 53-2) et <strong>destitution</strong> par le Parlement en Haute Cour (art. 68).</li>
+      </ul>
+      <p class="sub2-title">B. Inviolabilité temporaire pour les actes non liés à l'exercice du mandat (art. 67)</p>
+      <ul>
+        <li>Durant le mandat : <strong>aucune procédure judiciaire</strong> ne peut être engagée.</li>
+        <li>Après le mandat : l'inviolabilité cesse <strong>1 mois après l'expiration</strong>.</li>
+        <li><strong>Jacques Chirac</strong> : 1er chef d'État français condamné pénalement (2011) pour emplois fictifs à la mairie de Paris → peines de prison avec sursis.</li>
+        <li><strong>Sarkozy</strong> : affaire Bygmalion (dépassement du plafond de dépenses de campagne avec fausses factures).</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">V — Les compétences du Président</p>
+      <div class="article-box">
+        <div class="art-num">Article 5</div>
+        <div class="art-text">« Le Président de la République veille au respect de la Constitution. Il assure, par son arbitrage, le fonctionnement régulier des pouvoirs publics ainsi que la continuité de l'État. Il est le garant de l'indépendance nationale, de l'intégrité du territoire et du respect des traités. »</div>
+      </div>
+      <p class="sub2-title">Pouvoirs propres (sans contreseing — art. 19)</p>
+      <ul>
+        <li>Dissolution de l'Assemblée Nationale (art. 12)</li>
+        <li>Référendum (art. 11)</li>
+        <li>Pleins pouvoirs en cas de crise (art. 16)</li>
+        <li>Nomination du Premier Ministre (art. 8)</li>
+        <li>Saisine du Conseil Constitutionnel</li>
+        <li>Message aux assemblées (art. 18)</li>
+        <li>Nomination aux emplois civils et militaires</li>
+      </ul>
+      <p class="sub2-title">Pouvoirs partagés (soumis au contreseing du PM et des ministres)</p>
+      <ul>
+        <li>Promulgation des lois (art. 10)</li>
+        <li>Signature des ordonnances et décrets en Conseil des ministres (art. 13)</li>
+        <li>Pouvoirs diplomatiques et militaires (négociation et ratification des traités, chef des armées)</li>
+        <li>Droit de grâce</li>
+        <li>Initiative de révision constitutionnelle</li>
+      </ul>
+      <div class="alert alert-gold">
+        <div class="alert-label">⚠ Fait majoritaire</div>
+        Quand le Président et l'AN ont la même couleur politique → le PM s'efface, le Président gouverne de facto. L'AN devient une "chambre d'enregistrement". Problème démocratique : le Parlement n'a aucun contrôle direct sur le Président.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOUVERNEMENT -->
+<div class="section" id="gouv">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-blue">GV</span>
+    <span class="section-title">Le Gouvernement — composition, responsabilité, attributions</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">I — Composition du gouvernement</p>
+      <div class="article-box">
+        <div class="art-num">Article 20</div>
+        <div class="art-text">« Le gouvernement détermine et conduit la politique de la nation » — organe politique central, sous l'autorité du PM, fondé sur la confiance du Parlement devant qui il est responsable.</div>
+      </div>
+      <ul>
+        <li>Le <strong>Premier Ministre est nommé par le Président</strong> (art. 8 — pouvoir propre). En pratique, coutume constitutionnelle : il est de la couleur politique de la majorité de l'AN.</li>
+        <li>Incompatibilité : <strong>art. 23</strong> — la fonction ministérielle est incompatible avec tout mandat parlementaire (national ou européen) et toute activité publique ou privée. Rupture avec la tradition parlementaire.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Responsabilité pénale des ministres</p>
+      <p class="sub2-title">A. Pour les actes accomplis dans l'exercice de leurs fonctions</p>
+      <ul>
+        <li>Titre X de la Constitution → <strong>Cour de Justice de la République (CJR)</strong></li>
+        <li>Composition : 15 juges (12 parlementaires élus + 3 magistrats du siège à la Cour de Cassation, dont un préside).</li>
+        <li>Procédure : plainte → commission des requêtes → classement ou transmission au Procureur général → saisine de la CJR.</li>
+      </ul>
+      <div class="alert alert-red">
+        <div class="alert-label">⚠ Critiques récurrentes de la CJR</div>
+        <ul>
+          <li>Composition : les parlementaires n'ont aucune formation juridique.</li>
+          <li>Légitimité : décisions perçues comme clémentes — « le politique protège le politique ».</li>
+          <li><strong>Affaire du sang contaminé (1999)</strong> : Laurent Fabius et Georgina Dufoix relaxés pour homicide involontaire. Edmond Hervé reconnu coupable mais dispensé de peine.</li>
+          <li><strong>Ségolène Royal (2010)</strong> : relaxée par la CJR 14 ans après des déclarations sur un bizutage.</li>
+        </ul>
+      </div>
+      <div class="alert alert-gold">
+        <div class="alert-label">📌 Point historique — Affaire Fabius / sang contaminé</div>
+        <em>Laurent Fabius, PM de 1984-1986, accusé d'avoir retardé le dépistage du SIDA pour favoriser un laboratoire français. Relaxé en 1999 : les juges ont estimé qu'il avait agi conformément aux connaissances scientifiques de l'époque.</em> La CJR avait d'abord déclaré l'action éteinte (prescription de 3 ans), ce qui a conduit à sa création.
+      </div>
+      <p class="sub2-title">B. Pour les actes accomplis en dehors de leurs fonctions</p>
+      <p>Responsabilité devant les <strong>juridictions répressives ordinaires</strong> (droit commun).</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — Fonctionnement du gouvernement</p>
+      <ul>
+        <li><strong>Conseil des ministres</strong> : présidé par le Président de la République, qui fixe l'ordre du jour et dirige les débats. Instance collégiale de discussion et d'arbitrage politique (ne prend pas d'actes juridiques directement).</li>
+        <li><strong>Coordination</strong> par le Premier Ministre (art. 21), assisté par le <strong>Secrétariat Général du Gouvernement</strong>.</li>
+        <li><strong>Conseil de cabinet</strong> (sous autorité du PM) : tombé en désuétude sauf en cohabitation.</li>
+        <li>Formations interministérielles ne regroupant pas tout le gouvernement.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — Attributions</p>
+      <p class="sub2-title">Attributions collégiales du gouvernement</p>
+      <ul>
+        <li>Détermine et conduit la <strong>politique de la nation</strong> (art. 20).</li>
+        <li>Peut faire voter des lois et intervenir dans le domaine du Parlement via les <strong>ordonnances</strong> (art. 38).</li>
+        <li>Peut déclencher l'<strong>état de siège</strong> (transfert de compétences civiles aux militaires) ou l'<strong>état d'urgence</strong> (loi du 3 avril 1955).</li>
+      </ul>
+      <p class="sub2-title">Attributions du Premier Ministre (art. 21)</p>
+      <ul>
+        <li>Dirige l'action du gouvernement.</li>
+        <li>Pouvoir de <strong>nomination</strong> des civils et militaires (peut déléguer aux ministres).</li>
+        <li>Interlocuteur privilégié du Parlement, seul membre de l'exécutif à avoir l'initiative des lois.</li>
+        <li>Peut engager la responsabilité du gouvernement : vote de confiance (art. 49-1), engagement sur un texte (art. 49-3), déclaration de politique générale devant le Sénat.</li>
+        <li>Consulté lors de la dissolution (art. 12) et lors de l'application de l'art. 16.</li>
+        <li>Peut proposer une révision de la Constitution et saisir le Conseil Constitutionnel.</li>
+      </ul>
+      <div class="alert alert-blue">
+        <div class="alert-label">💬 Citation — Michel Rocard</div>
+        <em>« La fonction de Premier ministre est le bail le plus précaire de Paris. »</em>
+      </div>
+      <p class="sub2-title">Attributions des ministres</p>
+      <ul>
+        <li><strong>Rôle politique</strong> : contreseing des actes présidentiels, accès aux assemblées parlementaires.</li>
+        <li><strong>Rôle administratif</strong> : chefs de services, pouvoir hiérarchique sur leurs administrations.</li>
+        <li>Pas de pouvoir réglementaire général (appartient seulement au PM et au Président) mais pouvoir réglementaire dans leur domaine de compétence.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PARLEMENT -->
+<div class="section" id="parlement">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-green">AN</span>
+    <span class="section-title">Le Parlement — Assemblée Nationale &amp; Sénat</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">I — Élection des parlementaires</p>
+      <div class="two-col">
+        <div class="col-box" style="border-top:3px solid var(--blue)">
+          <div class="col-box-title" style="color:var(--blue-light)">Assemblée Nationale (577 députés)</div>
+          <ul>
+            <li><strong>Suffrage universel direct</strong> — scrutin uninominal majoritaire à 2 tours</li>
+            <li>11 sièges réservés aux Français de l'étranger</li>
+            <li>Renouvellement intégral en juin tous les 5 ans</li>
+            <li>1er tour : >50% des suffrages exprimés ET >25% des inscrits</li>
+            <li>2e tour : candidats avec ≥12,5% des inscrits</li>
+            <li>Contentieux : <strong>Conseil Constitutionnel</strong> (art. 56)</li>
+          </ul>
+        </div>
+        <div class="col-box" style="border-top:3px solid var(--purple)">
+          <div class="col-box-title" style="color:var(--purple-light)">Sénat (348 membres)</div>
+          <ul>
+            <li><strong>Suffrage universel indirect</strong> — représente les collectivités territoriales</li>
+            <li>Élus par le <strong>collège des grands électeurs</strong> (~160 000 membres)</li>
+            <li>Composition : députés + sénateurs, conseillers régionaux, départementaux, délégués des conseils municipaux (<strong>95% du collège</strong>)</li>
+            <li>Mandat de <strong>6 ans</strong>, renouvellement par moitié tous les 3 ans → continuité institutionnelle</li>
+            <li>Scrutin : uninominal majoritaire à 2 tours si 1-2 sénateurs ; <strong>proportionnelle</strong> si 3+</li>
+            <li>Vote <strong>obligatoire</strong> pour les grands électeurs (amende 100€ si absence injustifiée)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Caractéristiques du mandat parlementaire</p>
+      <ul>
+        <li>Mandat <strong>collectif</strong> : c'est l'assemblée qui représente la Nation, pas l'individu. Chaque élu représente la <strong>Nation dans son entièreté</strong> (conséquence de l'indivisibilité de la République — art. 1er).</li>
+        <li>Mandat <strong>représentatif</strong> : le parlementaire n'est pas le représentant de ses électeurs, il est libre dans ses votes.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — Statut des parlementaires : immunités (art. 26)</p>
+      <div class="two-col">
+        <div class="col-box" style="border-top:3px solid var(--green)">
+          <div class="col-box-title" style="color:var(--green-light)">Irresponsabilité (al. 1)</div>
+          <p>Aucun membre du Parlement ne peut être poursuivi, recherché, arrêté, détenu ou jugé à l'occasion des <strong>opinions ou votes émis</strong> dans l'exercice de ses fonctions. Absolue, <strong>ne peut être levée</strong>, s'applique au-delà du mandat.</p>
+        </div>
+        <div class="col-box" style="border-top:3px solid var(--blue)">
+          <div class="col-box-title" style="color:var(--blue-light)">Inviolabilité (al. 2)</div>
+          <p>Pour les actes étrangers à la fonction (actes de simple citoyen), aucune arrestation ou mesure privative de liberté sans <strong>autorisation du bureau de l'assemblée</strong>. Sauf crime ou délit flagrant ou condamnation définitive.</p>
+        </div>
+      </div>
+      <p style="margin-top:10px">Les incompatibilités (art. 25) visent à éviter les conflits d'intérêts (fonctions de direction dans certaines sociétés, etc.).</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — Organisation des assemblées</p>
+      <ul>
+        <li><strong>Bureau des assemblées</strong> : dirige les travaux parlementaires, administre les assemblées, désigné chaque année.</li>
+        <li><strong>Conférence des présidents</strong> : fixe le calendrier et l'ordre du jour.</li>
+        <li><strong>Commissions permanentes</strong> (8 max) : examinent les projets de loi avant vote en séance, peuvent auditionner les ministres.</li>
+        <li><strong>Commissions spéciales</strong> : pour un seul texte, disparaissent à l'adoption/rejet.</li>
+        <li><strong>Groupes parlementaires</strong> : transposition des formations politiques. Consacrés par la révision de 2008 (art. 51) avec droits spécifiques pour l'opposition.</li>
+        <li><strong>Délégations parlementaires</strong> : informent sur le droit européen, reçoivent les propositions d'actes de l'UE.</li>
+        <li><strong>Offices parlementaires</strong> : rôle d'expertise scientifique et technologique.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">V — Sessions parlementaires</p>
+      <div class="card-grid">
+        <div class="card blue">
+          <div class="card-name">Session ordinaire unique</div>
+          <p>Depuis révision du <strong>4 août 1995</strong> : 1er jour ouvrable d'octobre → dernier jour ouvrable de juin (9 mois). Remplace les 2 sessions (170 jours) pour renforcer le rôle législatif.</p>
+        </div>
+        <div class="card gold">
+          <div class="card-name">Sessions extraordinaires (art. 29-30)</div>
+          <p>À la demande du PM ou d'une majorité des membres de l'AN. Sur un ordre du jour déterminé, max <strong>12 jours</strong>.</p>
+        </div>
+        <div class="card green">
+          <div class="card-name">Sessions de plein droit</div>
+          <p>Pendant l'application de l'art. 16, après dissolution et élections générales, ou pour un message du Président.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONSEIL CONSTITUTIONNEL -->
+<div class="section" id="cc">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-purple">CC</span>
+    <span class="section-title">Le Conseil Constitutionnel &amp; la QPC</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">Origine et logique initiale</p>
+      <p>À l'origine, le CC n'était <strong>pas une juridiction</strong> mais un organe politique destiné à empêcher le Parlement de dépasser ses compétences (rationalisation du parlementarisme). Sous la IVe, le Comité constitutionnel ne fonctionnait pas : si une inconstitutionnalité était détectée, on révisait la Constitution et non la loi (<strong>légicentrisme</strong> — la loi est l'expression de la volonté générale). Tout change en 1958 et surtout avec la décision de 1971.</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">I — Les membres du Conseil Constitutionnel</p>
+      <div class="alert alert-blue">
+        <div class="alert-label">Article 56 — Composition</div>
+        9 membres, mandat de <strong>9 ans non renouvelable</strong>, renouvellement par tiers tous les 3 ans. 3 nommés par le Président de la République, 3 par le président du Sénat, 3 par le président de l'AN.
+      </div>
+      <ul>
+        <li>Nominations du Président de la République : soumises au vote des commissions permanentes de chaque assemblée (<strong>droit de veto</strong> si les votes négatifs représentent plus de 3/5 des suffrages exprimés).</li>
+        <li>Nominations des présidents des assemblées : soumises à simple avis de la commission compétente de l'assemblée concernée.</li>
+        <li><strong>Anciens Présidents de la République</strong> : membres de droit à vie (art. 56, al. 2). Auriol et Coty (IVe) y ont siégé. Sous la Ve : De Gaulle et Mitterrand ont refusé ; Giscard y entre en 2004 ; Chirac y entre en 2007 mais cesse en 2011 (condamnation pénale + santé) ; Sarkozy accepte en 2012 puis renonce (invalidation compte de campagne). Suppression souhaitée mais Sarkozy s'y est opposé en 2008.</li>
+        <li>Le <strong>président du CC</strong> est choisi par le Président de la République parmi ses membres, pour 9 ans non renouvelable.</li>
+      </ul>
+      <p class="sub2-title">Statut des membres</p>
+      <ul>
+        <li><strong>Pas de conditions</strong> : ni âge, ni compétence professionnelle, ni parité dans les textes (en pratique, plus de juristes aujourd'hui).</li>
+        <li><strong>Incompatibilités</strong> (art. 57 + ordonnance 1958 + loi 1995) : tout mandat électif (y compris local et européen), ministre, membre du Parlement, Conseil économique et social. Loi organique 2013 : incompatibles avec toutes activités professionnelles.</li>
+        <li>Peuvent se livrer à des travaux scientifiques, littéraires ou artistiques.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Organisation et fonctionnement</p>
+      <ul>
+        <li>Siège au <strong>Palais Royal</strong>. Structure légère (~80 personnes).</li>
+        <li>Secrétaire général issu du Conseil d'État (rôle essentiel).</li>
+        <li>Greffe depuis 1993 → renforce le caractère juridictionnel.</li>
+        <li>Rapporteurs adjoints pour le contentieux électoral (issus de la Cour des comptes ou du Conseil d'État).</li>
+        <li><strong>Contrôle à priori</strong> (art. 54, 61) : procédure inquisitoire secrète (instruction + délibération). La décision est publiée. Pas d'opinions dissidentes (tradition française).</li>
+        <li><strong>Contrôle à posteriori</strong> (art. 61-1, QPC) : procédure contradictoire avec présence des parties.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — La montée en puissance du CC : 3 étapes clés</p>
+      <table class="dates-table">
+        <thead><tr><th>Date</th><th>Événement</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">1958-1974</td><td>CC saisi seulement 9 fois</td><td>Peu d'impact — seulement les 4 plus hautes autorités pouvaient saisir</td></tr>
+          <tr>
+            <td class="date-col">16 juillet 1971</td>
+            <td><strong>Décision liberté d'association</strong></td>
+            <td>Première intégration du Préambule de 1958, de la DDHC et du Préambule de 1946 → naissance du <strong>bloc de constitutionnalité</strong>. Passage d'un contrôle externe (légalité formelle) à un contrôle interne (fond). Le CC devient gardien des droits fondamentaux.</td>
+          </tr>
+          <tr>
+            <td class="date-col">29 oct. 1974</td>
+            <td><strong>Révision constitutionnelle</strong></td>
+            <td>Extension de la saisine à <strong>60 députés ou 60 sénateurs</strong> → l'opposition peut saisir le CC. Multiplication des saisines.</td>
+          </tr>
+          <tr>
+            <td class="date-col">2008</td>
+            <td><strong>QPC — Question Prioritaire de Constitutionnalité</strong> (art. 61-1)</td>
+            <td>Contrôle à <em>posteriori</em>. Tout justiciable peut contester une loi. Système de filtrage (juge ordinaire → juridiction suprême → CC).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — La QPC : fonctionnement détaillé</p>
+      <p>Introduite par la révision de 2008 (art. 61-1). Précédentes tentatives : projet Mitterrand (1989), rapport Vedel (1993).</p>
+      <div class="schema">
+        <div class="schema-flow">
+          <div class="schema-node" style="border-color:var(--blue);color:var(--blue-light)">Justiciable soulève une QPC devant le juge</div>
+          <span class="schema-arrow">→</span>
+          <div class="schema-node">Juge évalue le caractère sérieux → sursoit à statuer</div>
+          <span class="schema-arrow">→</span>
+          <div class="schema-node">Transmission à la juridiction suprême (CE ou Cour de cassation)</div>
+          <span class="schema-arrow">→</span>
+          <div class="schema-node" style="border-color:var(--gold);color:var(--gold-light)">Filtrage (sérieux ?) → transmission au CC</div>
+          <span class="schema-arrow">→</span>
+          <div class="schema-node" style="border-color:var(--red);color:#ff8080">Décision du Conseil Constitutionnel</div>
+        </div>
+      </div>
+      <div class="alert alert-gold">
+        <div class="alert-label">📌 Qui peut saisir le CC ?</div>
+        Contrôle à priori : Président de la République, PM, présidents des 2 assemblées, + 60 députés ou sénateurs (depuis 1974).<br>
+        Contrôle à posteriori (QPC) : tout justiciable impliqué dans un procès.
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">V — Attributions du Conseil Constitutionnel</p>
+      <ul>
+        <li><strong>Compétences d'attribution uniquement</strong> — pas de compétence générale (décision IVG de 1975).</li>
+        <li><strong>Juge électoral</strong> : vérifie la régularité des élections et votations (référendums).</li>
+        <li><strong>Juge constitutionnel</strong> : juge de la répartition des compétences (législatif/exécutif) et juge de la constitutionnalité des normes.</li>
+        <li>Peut rendre des <strong>avis</strong> dans des cas précis.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     CHAPITRE 2 — INSTITUTIONS ADMINISTRATIVES DE L'ÉTAT
+     ================================================================ -->
+
+<div class="chapter-header">
+  <div class="chapter-num">2</div>
+  <div class="chapter-title">
+    <h2>Les Institutions Administratives de l'État</h2>
+    <p>Centralisation · Déconcentration · Administration centrale · Préfet · Réforme de l'État</p>
+  </div>
+</div>
+
+<!-- Centralisation / décentralisation -->
+<div class="section" id="centralisation">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-blue">⚙</span>
+    <span class="section-title">Centralisation, déconcentration et décentralisation</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Missions de l'administration</p>
+      <ul>
+        <li><strong>Régulation juridique</strong> : normes générales, obligatoires et impersonnelles.</li>
+        <li><strong>Prestation et gestion</strong> : services publics (eau, transports, voirie…).</li>
+        <li><strong>Contrôle et évaluation</strong> : corps d'inspection pour vérifier le bon fonctionnement.</li>
+      </ul>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Les deux grands modes d'administration</p>
+      <div class="two-col">
+        <div class="col-box" style="border-top:3px solid var(--blue)">
+          <div class="col-box-title" style="color:var(--blue-light)">Centralisation</div>
+          <p><strong>Concentration</strong> : le pouvoir de décision appartient aux seules autorités centrales depuis la capitale. Uniformité des règles sur tout le territoire. Quasi-exclusif en France jusqu'à fin 18e.</p>
+          <p style="margin-top:8px"><strong>Déconcentration</strong> : au sein de la même personne morale (l'État), le pouvoir central confie des capacités de décision à des agents locaux (ex : <strong>le Préfet</strong>) nommés par l'État et agissant en son nom. La circonscription administrative n'est pas une personne morale distincte.</p>
+        </div>
+        <div class="col-box" style="border-top:3px solid var(--green)">
+          <div class="col-box-title" style="color:var(--green-light)">Décentralisation</div>
+          <p>Reconnaissance d'autres <strong>personnes publiques</strong> : les collectivités territoriales (communes, départements, régions). Distinctes de l'État, dirigées par des <strong>autorités élues</strong>, avec des compétences, des moyens et un budget propres.</p>
+          <p style="margin-top:8px"><strong>Apparition</strong> : fin 19e siècle. Loi 1871 (départements), loi 1884 (communes). Essor décisif avec la loi du 2 mars 1982.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Le double visage du département</p>
+      <div class="two-col">
+        <div class="alert alert-blue"><div class="alert-label">Figure déconcentrée</div>Dirigée par le <strong>Préfet</strong> → représente l'État, défend l'intérêt général</div>
+        <div class="alert alert-green"><div class="alert-label">Figure décentralisée</div>Dirigée par le <strong>Conseil Départemental</strong> → défend les intérêts de la population du territoire</div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">La fonction publique en chiffres</p>
+      <p>~5,5 millions de fonctionnaires, représentant ~57% du PIB en dépenses publiques.</p>
+      <div class="card-grid">
+        <div class="card blue"><div class="card-name">Fonction publique d'État</div><p>~2,4M d'agents — grande majorité dans les services déconcentrés</p></div>
+        <div class="card green"><div class="card-name">Fonction publique territoriale</div><p>~2M d'agents — surtout communes et intercommunalités</p></div>
+        <div class="card gold"><div class="card-name">Fonction publique hospitalière</div><p>~1,1M d'agents — hôpitaux</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Administration centrale -->
+<div class="section" id="admcentrale">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-gold">AC</span>
+    <span class="section-title">Les institutions administratives centrales</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">Typologie d'Edgar Pisani (1959)</p>
+      <div class="card-grid">
+        <div class="card blue"><div class="card-name">Administration de gestion</div><p>Services qui remplissent des charges traditionnelles de dossiers</p></div>
+        <div class="card gold"><div class="card-name">Administrations de missions</div><p>Structures légères (~10 personnes) pour la réflexion stratégique à moyen terme</p></div>
+        <div class="card red"><div class="card-name">Administrations d'État-major</div><p>Équipes éphémères de collaborateurs directs des autorités exécutives (ex : cabinets ministériels)</p></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">I — Services interministériels (rattachés au Premier Ministre)</p>
+      <p>Le PM est à la tête d'une administration de 5000 agents à Matignon. Quatre types de structures :</p>
+      <ul>
+        <li><strong>Secrétariat Général du Gouvernement (SGG)</strong> : depuis fin IIIe République, forme actuelle depuis 1947. Toujours dirigé par un membre du Conseil d'État. Remarquable stabilité (11 secrétaires généraux depuis 1947). Rôles : prépare les décisions du gouvernement, assure les relations gouvernement-parlement, recueille les signatures, assure la promulgation des décrets au JO, mission de conseil juridique.</li>
+        <li><strong>Direction des services administratifs et financiers de Matignon</strong> : moyens de fonctionnement du PM et du gouvernement.</li>
+        <li><strong>Service d'Information du Gouvernement (SIG)</strong> : créé en 2000. Informe le public, pilote la communication gouvernementale, analyse l'opinion publique.</li>
+        <li><strong>Services d'études et de réflexion stratégique</strong> : administrations de mission (CGET, etc.) et comités interministériels permanents.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Services ministériels</p>
+      <p>Structure pyramidale : <strong>bureaux → sous-directions → directions → ministère</strong>. Accès par concours, corps, grade, échelon, progression automatique sur grille salariale.</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — Administrations d'État-major (cabinets)</p>
+      <ul>
+        <li>Collaborateurs personnels, en détachement de l'administration, qui retrouvent leur emploi au ministère après leur mission.</li>
+        <li><strong>3 fonctions</strong> : protection et valorisation du responsable politique ; impulsion et orientation de l'action administrative (rôle controversé) ; coordination interministérielle.</li>
+        <li><strong>Cabinet ministériel</strong> : limité à 10 membres officiels (décret 18 mai 2017), mais souvent dépassé par des membres officieux. Dirigé par un directeur de cabinet.</li>
+        <li><strong>Cabinet du Premier Ministre</strong> : ~50 personnes. 2 branches : cabinet politique (communication) + cabinet technique (secteurs de l'État).</li>
+        <li><strong>Services de l'Élysée</strong> : ~816 personnes (2018). Secrétariat général du Président (premier cercle des conseillers techniques). De Gaulle : structure restreinte mais influente (rejet du modèle américain).</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — La réforme de l'administration centrale</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">1973</span><div class="tl-text">Choc pétrolier → déficits durables → remise en cause de l'organisation administrative.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">1998</span><div class="tl-text">Ministère de la réforme de l'État créé. Premières tentatives se heurtent à de fortes résistances (Allègre à l'Éducation nationale ; Sautter aux Finances).</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">2001</span><div class="tl-text"><strong>LOLF</strong> (Loi Organique relative aux Lois de Finances, 1er août 2001) : passage d'une logique de <strong>moyens</strong> à une logique de <strong>résultats</strong>.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">2004-2006</span><div class="tl-text">Gouvernement Raffarin : audits de modernisation par hauts fonctionnaires et spécialistes du privé.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--gold)"></div><span class="tl-year">2007</span><div class="tl-text"><strong>RGPP</strong> (Révision Générale des Politiques Publiques) sous Sarkozy/Fillon. Mesure phare : non-remplacement d'<strong>un fonctionnaire sur deux</strong> partant à la retraite (-30 000/an). Achevée au printemps 2010.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">2012</span><div class="tl-text"><strong>MAP</strong> (Modernisation de l'Action Publique) sous Hollande.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">2017</span><div class="tl-text"><strong>Action Publique 2022</strong> sous Macron : simplification administrative, transition numérique, rénovation du statut de la fonction publique.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">2022</span><div class="tl-text"><strong>ENA → INSP</strong> (Institut National du Service Public) : diversification du recrutement de la haute fonction publique, ouverture aux étudiants boursiers.</div></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">V — Les Autorités Administratives Indépendantes (AAI)</p>
+      <p>Placées hors hiérarchie ministérielle, hors autorité directe du gouvernement. Toutes à Paris. Apparues dans les années 1970. Rationalisées par la loi du <strong>20 janvier 2017</strong> : de ~40 à <strong>24 AAI</strong>.</p>
+      <div class="sub2-title">Domaine des droits et libertés</div>
+      <div class="card-grid">
+        <div class="card blue"><div class="card-name">Médiateur de la République (1973)</div><p>Devenu <strong>Défenseur des droits</strong>. Protège les citoyens face aux dysfonctionnements de l'administration.</p></div>
+        <div class="card gold"><div class="card-name">CNIL (1978)</div><p>Garantit les libertés publiques face aux fichiers informatiques et à l'usage des données personnelles.</p></div>
+        <div class="card green"><div class="card-name">CADA (1978)</div><p>Garantit le droit d'accès aux documents administratifs.</p></div>
+        <div class="card purple"><div class="card-name">CSA → ARCOM (2022)</div><p>Audiovisuel, nomination des dirigeants des chaînes. Ex : refus de la licence de C8.</p></div>
+      </div>
+      <div class="sub2-title">Domaine économique et financier</div>
+      <div class="card-grid">
+        <div class="card red"><div class="card-name">AMF</div><p>Autorité des marchés financiers. Compétences renforcées progressivement.</p></div>
+        <div class="card blue"><div class="card-name">ARCEP</div><p>Régule les télécommunications, les postes et la distribution de la presse. Attribue les fréquences radio/TV.</p></div>
+      </div>
+      <div class="sub2-title">Pouvoirs des AAI</div>
+      <ul>
+        <li><strong>Avis et recommandations</strong> (ex : CADA)</li>
+        <li><strong>Contrôles et convocations</strong> (ex : CNIL)</li>
+        <li><strong>Pouvoirs normatifs</strong> par habilitation législative (règles applicables au secteur)</li>
+        <li><strong>Décisions individuelles</strong> : délivrance/retrait d'autorisations (ex : ARCOM, ARCEP)</li>
+        <li><strong>Pouvoirs de sanction</strong> : avertissements, blâmes, suspensions, sanctions financières proportionnées, injonctions</li>
+      </ul>
+      <div class="alert alert-green">
+        <div class="alert-label">📌 Indépendance des AAI</div>
+        Garantie organique (collégialité), nomination diverse (juridictions + autorités politiques + personnalités qualifiées), mandat fixe non renouvelable, inamovibilité, incompatibilités, autonomie administrative et financière. L'État conserve un contrôle juridictionnel (juge administratif ou judiciaire) et financier (Cour des comptes, corps d'inspection).
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">VI — Évolution du statut de la fonction publique</p>
+      <ul>
+        <li><strong>Statut général de 1946</strong> : neutralité, égalité, défense de l'intérêt général. Recrutement par concours. Corps, grade, échelon, grille salariale automatique. Droits : grève, défense disciplinaire. Obligations : obéissance hiérarchique, devoir de réserve.</li>
+        <li><strong>Évolutions depuis 2000</strong> : prise en compte du mérite individuel (primes, évaluation annuelle) ; réduction des corps (2 grandes filières) ; développement de la formation continue ; rupture conventionnelle (2018) ; recours croissant au contrat de droit privé ; transformation de l'ENA en INSP (2022).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PRÉFET -->
+<div class="section" id="prefet">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-red">Pf</span>
+    <span class="section-title">Le Préfet et les services déconcentrés</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">I — Statut du Préfet</p>
+      <ul>
+        <li>Créé en <strong>1800 par Napoléon Ier</strong> : en plaçant un préfet à la tête de chaque département, il achève la centralisation et l'unification de la France (<em>« l'Empereur aux petits pieds »</em>).</li>
+        <li>Nommé par <strong>décret du Président en Conseil des ministres</strong>, sur proposition du PM et du ministre de l'Intérieur.</li>
+        <li>Conditions révisées en <strong>2022</strong> : au moins 2/3 des postes doivent être exercés par des personnes justifiant de 5 ans dans des postes d'encadrement territorial ; 1/3 peut venir d'ailleurs (secteur privé possible).</li>
+        <li>Emploi supérieur à la discrétion du gouvernement → révocable à tout moment.</li>
+        <li>Droits limités : <strong>pas de droit de grève ni syndical</strong>. Devoir de loyauté envers le gouvernement en place. Opinions politiques, philosophiques ou religieuses consignées dans son dossier.</li>
+        <li>Le <strong>Préfet de région</strong> est celui du chef-lieu (ex : Préfet de Nouvelle-Aquitaine = Préfet de la Gironde).</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Attributions : la transformation par la loi du 2 mars 1982</p>
+      <div class="alert alert-red">
+        <div class="alert-label">⚠ Rupture majeure — Loi du 2 mars 1982</div>
+        Très mal accueillie par le corps préfectoral. Double transformation : dépossession du rôle politique + recentrage sur le rôle administratif.
+      </div>
+      <div class="two-col">
+        <div class="col-box">
+          <div class="col-box-title" style="color:#ff8080">Avant 1982</div>
+          <ul>
+            <li>Présidait le conseil départemental et exécutait ses délibérations</li>
+            <li>Contrôle de tutelle : pouvait valider ou invalider les actes locaux (légalité ET opportunité)</li>
+          </ul>
+        </div>
+        <div class="col-box">
+          <div class="col-box-title" style="color:var(--green-light)">Après 1982</div>
+          <ul>
+            <li>L'exécutif est donné au président élu du conseil départemental</li>
+            <li>Ne peut plus qu'<strong>saisir le juge administratif</strong> en cas de doute sur la légalité (contrôle de légalité seulement, pas d'opportunité)</li>
+            <li>Conserve le <strong>référé préfectoral</strong> (suspension temporaire d'un acte en urgence)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub2-title">3 missions actuelles du Préfet</p>
+      <ul>
+        <li><strong>1. Contrôle administratif des actes locaux</strong> dans sa circonscription (art. 72 Constit., loi de 1982). L'acte entre en vigueur mais le préfet peut saisir le juge administratif.</li>
+        <li><strong>2. Représentation de l'État</strong> dans la circonscription (au nom du PM et du gouvernement). Veille à l'application des lois et règlements nationaux. Assure le maintien de l'ordre public (plans Vigipirate, expulsions). Met en œuvre les politiques nationales et signe des contrats de dotations financières aux collectivités.</li>
+        <li><strong>3. Direction des services déconcentrés</strong> de l'administration civile (sauf justice et partiellement finances). Chef hiérarchique des agents. Réformes récentes : autorité interministérielle renforcée, prérogatives accrues pour les préfets de région sur ceux de département.</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — Réforme des services déconcentrés (REAT)</p>
+      <p>Réforme de l'Administration Territoriale de l'État, engagée fin 2000s dans le cadre de la RGPP. Objectif : préfets = <strong>vrais managers</strong> des services de l'État. 2 volets :</p>
+      <p class="sub2-title">A. Réforme financière des préfectures (LOLF 2001, décret 2010)</p>
+      <p>Le préfet de région reçoit la délégation des crédits de l'État pour toute sa région et les répartit entre les préfets de département. Dotation globale (fonctionnement, rémunérations, maintenance). Le secrétaire général de préfecture (souvent un sous-préfet) gère la répartition.</p>
+
+      <p class="sub2-title">B. Réorganisation des services déconcentrés (décrets 2004, 2010)</p>
+      <p>2 axes : regroupement des services sous l'autorité du Préfet (autorité interministérielle) ; clarification des niveaux : <strong>région = pilotage stratégique</strong>, <strong>département = service de proximité</strong>.</p>
+
+      <p class="sub2-title">Organisation régionale — 8 grandes directions régionales</p>
+      <table class="dates-table">
+        <thead><tr><th>Direction</th><th>Compétences</th></tr></thead>
+        <tbody>
+          <tr><td>DIRECCTE</td><td>Entreprises, concurrence, consommation, travail, emploi (opérationnelle depuis 2011)</td></tr>
+          <tr><td>DREAL</td><td>Environnement, aménagement, logement</td></tr>
+          <tr><td>DRAAF</td><td>Alimentation, agriculture, forêt</td></tr>
+          <tr><td>DRAC</td><td>Affaires culturelles</td></tr>
+          <tr><td>DRJSCS</td><td>Jeunesse, sports, cohésion sociale</td></tr>
+          <tr><td>DRFiP</td><td>Finances publiques (fusion services fiscaux + comptabilité publique)</td></tr>
+          <tr><td>ARS</td><td>Agence Régionale de Santé (opérationnelle dès 2010, pilote les politiques de santé)</td></tr>
+          <tr><td>Rectorat</td><td>Éducation nationale (conserve son autonomie)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="alert alert-gold">
+        <div class="alert-label">📌 Loi du 16 janvier 2015 — réduction de 22 à 13 régions</div>
+        Suppression d'environ 45 directions régionales. Exemple Nouvelle-Aquitaine : Bordeaux = préfecture de région + DRAC, ARS, rectorat, DIRECCTE, DRFiP ; Poitiers conserve la DREAL ; Limoges la DRAAF.
+      </div>
+
+      <p class="sub2-title">Organisation départementale (décret 3 déc. 2009, en vigueur 1er jan. 2010)</p>
+      <p>2 directions départementales sous autorité directe du préfet :</p>
+      <ul>
+        <li><strong>Direction Départementale de la Protection des Populations (DDPP)</strong> : consommateurs, sécurité sanitaire, répression des fraudes. Dans les grands départements : complétée par un volet cohésion sociale.</li>
+        <li>Autres services selon les besoins du territoire.</li>
+      </ul>
+
+      <p class="sub2-title">Les sous-préfectures (350 arrondissements)</p>
+      <ul>
+        <li>Déséquilibres démographiques : moyenne ~137 000 hab, mais certains arrondissements ~8 500 hab.</li>
+        <li>Rapport Cour des comptes 2012 → Valls confie une mission (rapport resté non public) préconisant fermeture de 50 à 80 sous-préfectures → expérimentation en Moselle et Alsace → non poursuivie.</li>
+        <li>Rapport Sénat 2017 : refonte progressive avec possibilité de regroupements.</li>
+        <li>Évolution choisie : <strong>adaptation des missions</strong> plutôt que suppression. 3 nouveaux rôles : proximité et sécurité, emploi et développement économique, conseil et développement territorial en zone rurale.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     CHAPITRE 3 — DÉCENTRALISATION
+     ================================================================ -->
+
+<div class="chapter-header">
+  <div class="chapter-num">3</div>
+  <div class="chapter-title">
+    <h2>Les Institutions Administratives Décentralisées</h2>
+    <p>Collectivités territoriales · Intercommunalité · Fragilités du système</p>
+  </div>
+</div>
+
+<!-- Collectivités territoriales -->
+<div class="section" id="decentral">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-green">CT</span>
+    <span class="section-title">Les collectivités territoriales — histoire, structure, libre administration</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+
+    <div class="sub">
+      <p class="sub-title">Historique</p>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">10 août 1871</span><div class="tl-text"><strong>Loi sur les départements</strong> : fait du département une véritable collectivité territoriale. Conseil élu, compétences propres, sous contrôle strict du préfet (tutelle préfectorale).</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">5 avril 1884</span><div class="tl-text"><strong>Loi charte communale</strong> : consacre la commune comme CT décentralisée. Personnalité juridique, conseil élu, compétences propres.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">1958</span><div class="tl-text">Constitution : affirme le principe de libre administration des CT (art. 72) tout en maintenant la tutelle préfectorale. Art. 24 : le Sénat représente les CT.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--gold)"></div><span class="tl-year">2 mars 1982</span><div class="tl-text"><strong>Loi Defferre</strong> (droits et libertés des communes, départements et régions) : 3 évolutions majeures : (1) la région devient une CT à part entière ; (2) suppression de la tutelle préfectorale (le préfet ne peut plus annuler un acte, seulement saisir le juge) ; (3) transfert de compétences de l'État vers les CT.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><span class="tl-year">16 janv. 2015</span><div class="tl-text">Réduction de 22 à <strong>13 régions</strong> métropolitaines.</div></div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">I — Les 3 éléments constitutifs d'une collectivité territoriale</p>
+      <div class="card-grid">
+        <div class="card blue">
+          <div class="card-name">Un nom</div>
+          <p>Peut être modifié par décret en Conseil d'État (ex : Basses-Pyrénées devenu Pyrénées-Atlantiques).</p>
+        </div>
+        <div class="card gold">
+          <div class="card-name">Un territoire</div>
+          <p>Assise territoriale précise. Le territoire national est entièrement découpé en communes (héritage de l'Ancien Régime). Départements : découpage largement artificiel (uniformisation). Régions : découpages plus récents (1955, puis 2015).</p>
+        </div>
+        <div class="card green">
+          <div class="card-name">Une population</div>
+          <p>Mesurée par recensement pour les communes. Déséquilibres : 70% des communes ont moins de 1000 habitants → fracture territoriale. L'intercommunalité est l'outil d'adaptation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">II — Le principe de libre administration (art. 72, 34)</p>
+      <p>Ne correspond pas au libre gouvernement (État unitaire) ni à la libre organisation, mais à la <strong>libre gestion</strong> par des conseils élus.</p>
+      <p class="sub2-title">4 conditions pour qu'une CT soit distincte de l'État :</p>
+      <ul>
+        <li><strong>1. Gérer ses affaires propres</strong> d'intérêt public local (décisions d'urbanisme, action sociale…)</li>
+        <li><strong>2. Via des autorités propres</strong> — organe délibérant (conseil régional, départemental, municipal) + organe exécutif (président de conseil, maire)</li>
+        <li><strong>3. Disposer de moyens propres</strong> — humains (fonctionnaires territoriaux), matériels et financiers (impôts locaux, budget autonome)</li>
+        <li><strong>4. Contrôle restreint de l'État</strong> — depuis 1982, le préfet ne peut que saisir le juge administratif en cas de doute sur la légalité d'un acte local (plus de tutelle d'opportunité)</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">III — Organisation actuelle</p>
+      <div class="card-grid">
+        <div class="card blue"><div class="card-name">~34 800 communes</div><p>Anciennes (certaines > 2000 ans), très émiettées. 70% &lt; 1000 habitants. 36 000+ élus.</p></div>
+        <div class="card gold"><div class="card-name">101 départements</div><p>Dirigés par un conseil départemental et son président. Double visage : CT + circonscription administrative.</p></div>
+        <div class="card green"><div class="card-name">13 régions (métropole)</div><p>Résultent de la loi du 16 janvier 2015. CT à part entière depuis 1982.</p></div>
+      </div>
+      <p><strong>~600 000 élus locaux</strong> — richesse démocratique mais source de complexité.</p>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">IV — Les structures intercommunales</p>
+      <p>Fondement : l'<strong>émiettement territorial et démographique</strong> de la France. L'intercommunalité permet de dépasser la fragmentation communale sans supprimer les communes.</p>
+      <p>Démocratie intercommunale limitée : représentants désignés par <strong>système de fléchage</strong> lors des élections municipales (pas de vote direct des citoyens). Le Sénat protège les communes contre un vote direct des intercommunalités.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Fragilités -->
+<div class="section" id="fragilites">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-red">⚠</span>
+    <span class="section-title">Fragilités du système décentralisé</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">4 grandes difficultés après 40 ans de décentralisation</p>
+      <div class="card-grid">
+        <div class="card red">
+          <div class="card-name">1. Complexité des compétences</div>
+          <p>Compétences partagées, croisées et concurrentes entre État, régions, départements, communes et intercommunalités → lisibilité et efficacité de l'action publique amoindries.</p>
+        </div>
+        <div class="card gold">
+          <div class="card-name">2. Essoufflement de la démocratie locale</div>
+          <p>Conseillers départementaux éloignés du terrain et inconnus des citoyens. Macron et Sarkozy avaient envisagé un élu commun département/région. Démocratie intercommunale très limitée (fléchage sans vote direct).</p>
+        </div>
+        <div class="card purple">
+          <div class="card-name">3. Lourdeur organisationnelle</div>
+          <p>L'organisation actuelle répond mal aux enjeux contemporains (cohésion territoriale, transition écologique, développement économique). Piste privilégiée : renforcement des régions. Débat sur la suppression des départements dans les métropoles.</p>
+        </div>
+        <div class="card blue">
+          <div class="card-name">4. Contrainte financière et fiscale</div>
+          <p>Réduction des dotations de l'État aux CT. Suppression de la taxe d'habitation → il ne reste principalement que la taxe foncière. L'échelon le plus fragilisé : le <strong>département</strong> (dépenses sociales RSA en hausse + recettes insuffisantes). Certains, comme la Seine-Saint-Denis (93), demandent une recentralisation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Juridictions -->
+<div class="section" id="juridictions">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-purple">⚖</span>
+    <span class="section-title">Les juridictions ordinaires — schéma de l'ordre juridictionnel français</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Dualité d'ordre juridictionnel</p>
+      <p>Originalité du système français par rapport aux autres systèmes étrangers : <strong>deux ordres de juridiction</strong>.</p>
+      <div class="two-col">
+        <div class="col-box" style="border-top:3px solid var(--blue)">
+          <div class="col-box-title" style="color:var(--blue-light)">Ordre judiciaire (droit privé)</div>
+          <ul>
+            <li><strong>Pénal</strong> : Tribunal de police → Tribunal correctionnel → Cour d'assise / Cour criminelle</li>
+            <li><strong>Civil</strong> : affaires entre personnes privées</li>
+            <li>Appel : <strong>Cour d'appel</strong></li>
+            <li>Cassation : <strong>Cour de cassation</strong></li>
+          </ul>
+        </div>
+        <div class="col-box" style="border-top:3px solid var(--green)">
+          <div class="col-box-title" style="color:var(--green-light)">Ordre administratif (droit public)</div>
+          <ul>
+            <li>1re instance : <strong>Tribunal administratif</strong></li>
+            <li>Appel : <strong>Cour administrative d'Appel</strong></li>
+            <li>Cassation : <strong>Conseil d'État</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-gold">
+        <div class="alert-label">📌 Indépendance de la justice (art. 64)</div>
+        Affirmée à l'art. 64, protégée par le Président assisté du <strong>Conseil Supérieur de la Magistrature (CSM)</strong>. Les juridictions administratives ont une garantie constitutionnelle sous forme de principe constitutionnel (décision Conseil Constitutionnel).
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="sub-title">Juridictions extraordinaires</p>
+      <ul>
+        <li><strong>Cour de Justice de la République (CJR)</strong> : juge les ministres pour les actes accomplis dans l'exercice de leurs fonctions (voir chapitre sur le gouvernement).</li>
+        <li><strong>Haute Cour</strong> : destitution du Président de la République (art. 68).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MÉMO EXAM -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <span class="section-icon ico-gold">📋</span>
+    <span class="section-title">MÉMO EXAMEN — Méthodologie &amp; points clés à retenir</span>
+    <span class="section-arrow">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub">
+      <p class="sub-title">Format de l'examen (4h, 4 questions)</p>
+      <ul>
+        <li>2 questions par cours</li>
+        <li>Beaucoup de connaissances attendues + <strong>réponse argumentée</strong></li>
+        <li>Structure : <strong>Introduction</strong> (accroche → définition des termes → annonce du plan en 2-3 parties) + <strong>développement en 2 parties</strong></li>
+        <li>Le plan peut être rendu apparent</li>
+      </ul>
+      <div class="alert alert-gold">
+        <div class="alert-label">Exemple de question — Comment sont nommés les membres du Conseil Constitutionnel ?</div>
+        Intro : définir le CC comme institution de contrôle de la constitutionnalité des lois, créée en 1958, dont le rôle s'est considérablement renforcé (1971, 1974, 2008). Plan : I. Un mode de nomination politique soumis à des garde-fous constitutionnels / II. Un statut protecteur de l'indépendance malgré les critiques persistantes.
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Dates absolument à retenir</p>
+      <div class="card-grid">
+        <div class="card blue"><div class="card-name">1789</div><p>DDHC — naissance des droits fondamentaux</p></div>
+        <div class="card gold"><div class="card-name">4 oct. 1958</div><p>Promulgation de la Constitution de la Ve République</p></div>
+        <div class="card green"><div class="card-name">16 juillet 1971</div><p>Décision liberté d'association → bloc de constitutionnalité</p></div>
+        <div class="card purple"><div class="card-name">29 oct. 1974</div><p>60 parlementaires peuvent saisir le CC</p></div>
+        <div class="card red"><div class="card-name">2 mars 1982</div><p>Loi Defferre — décentralisation, fin tutelle préfectorale</p></div>
+        <div class="card gold"><div class="card-name">2000</div><p>Quinquennat adopté par référendum</p></div>
+        <div class="card blue"><div class="card-name">2001</div><p>LOLF — logique de résultats</p></div>
+        <div class="card green"><div class="card-name">2008</div><p>Révision constitutionnelle — QPC, 2 mandats max, groupes parlementaires</p></div>
+        <div class="card purple"><div class="card-name">2015</div><p>Loi 22 → 13 régions</p></div>
+        <div class="card red"><div class="card-name">2022</div><p>ENA → INSP</p></div>
+      </div>
+    </div>
+    <div class="sub">
+      <p class="sub-title">Articles constitutionnels clés</p>
+      <table class="dates-table">
+        <thead><tr><th>Article</th><th>Contenu</th></tr></thead>
+        <tbody>
+          <tr><td class="date-col">Art. 1</td><td>République française : laïque, indivisible, sociale, démocratique</td></tr>
+          <tr><td class="date-col">Art. 3</td><td>Souveraineté nationale appartient au peuple</td></tr>
+          <tr><td class="date-col">Art. 5</td><td>Rôle du Président — arbitre, garant des institutions</td></tr>
+          <tr><td class="date-col">Art. 6</td><td>Président élu pour 5 ans au suffrage universel direct</td></tr>
+          <tr><td class="date-col">Art. 8</td><td>Nomination du PM par le Président</td></tr>
+          <tr><td class="date-col">Art. 10</td><td>Promulgation des lois par le Président</td></tr>
+          <tr><td class="date-col">Art. 11</td><td>Référendum</td></tr>
+          <tr><td class="date-col">Art. 12</td><td>Dissolution de l'AN</td></tr>
+          <tr><td class="date-col">Art. 13</td><td>Signature des décrets et ordonnances</td></tr>
+          <tr><td class="date-col">Art. 16</td><td>Pleins pouvoirs en cas de crise grave</td></tr>
+          <tr><td class="date-col">Art. 19</td><td>Pouvoirs propres (sans contreseing)</td></tr>
+          <tr><td class="date-col">Art. 20</td><td>Le gouvernement détermine et conduit la politique de la nation</td></tr>
+          <tr><td class="date-col">Art. 21</td><td>PM dirige l'action du gouvernement</td></tr>
+          <tr><td class="date-col">Art. 23</td><td>Incompatibilité mandat parlementaire/ministère</td></tr>
+          <tr><td class="date-col">Art. 24</td><td>Le Sénat représente les collectivités territoriales</td></tr>
+          <tr><td class="date-col">Art. 25</td><td>Incompatibilités parlementaires</td></tr>
+          <tr><td class="date-col">Art. 26</td><td>Immunités parlementaires (irresponsabilité + inviolabilité)</td></tr>
+          <tr><td class="date-col">Art. 34</td><td>Domaine de la loi / libre administration des CT</td></tr>
+          <tr><td class="date-col">Art. 38</td><td>Ordonnances</td></tr>
+          <tr><td class="date-col">Art. 49-1/3</td><td>Engagement de responsabilité du gouvernement</td></tr>
+          <tr><td class="date-col">Art. 56</td><td>Composition du Conseil Constitutionnel</td></tr>
+          <tr><td class="date-col">Art. 61 / 61-1</td><td>Contrôle de constitutionnalité (a priori / QPC a posteriori)</td></tr>
+          <tr><td class="date-col">Art. 64</td><td>Indépendance de l'autorité judiciaire</td></tr>
+          <tr><td class="date-col">Art. 67-68</td><td>Irresponsabilité et destitution du Président</td></tr>
+          <tr><td class="date-col">Art. 72</td><td>Libre administration des collectivités territoriales</td></tr>
+          <tr><td class="date-col">Art. 89</td><td>Révision constitutionnelle</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Institutions Politiques &amp; Administratives · UPPA · Fiche de révision complète · Bonne chance pour ton examen 🇫🇷
+</footer>
+
+<script>
+  function toggle(header) {
+    const section = header.parentElement;
+    section.classList.toggle('open');
+    if(section.classList.contains('open')) {
+      section.querySelector('.section-body').style.display = 'block';
+    } else {
+      section.querySelector('.section-body').style.display = 'none';
+    }
+  }
+
+  function openAll() {
+    document.querySelectorAll('.section').forEach(s => {
+      s.classList.add('open');
+      s.querySelector('.section-body').style.display = 'block';
+    });
+  }
+
+  function closeAll() {
+    document.querySelectorAll('.section').forEach(s => {
+      s.classList.remove('open');
+      s.querySelector('.section-body').style.display = 'none';
+    });
+  }
+
+  // Search
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    if (!q) {
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('hidden');
+        s.querySelector('.section-body').style.display = s.classList.contains('open') ? 'block' : 'none';
+        // remove marks
+        s.innerHTML = s.innerHTML.replace(/<mark>(.*?)<\/mark>/g, '$1');
+      });
+      return;
+    }
+
+    document.querySelectorAll('.section').forEach(s => {
+      const text = s.textContent.toLowerCase();
+      if (text.includes(q)) {
+        s.classList.remove('hidden');
+        s.classList.add('open');
+        s.querySelector('.section-body').style.display = 'block';
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
